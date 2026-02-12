@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Loading...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #000;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Loader styling - spinning circle */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #0f0;
+            z-index: 999;
+        }
+
+        .spinner {
+            width: 80px;           /* size bada chhota kar sakte ho */
+            height: 80px;
+            border: 8px solid #333;           /* dark grey base border */
+            border-top: 8px solid #0f0;       /* green top border jo ghumega */
+            border-radius: 50%;               /* perfect circle */
+            animation: spin 1.2s linear infinite;  /* speed adjust kar sakte ho */
+        }
+
+        @keyframes spin {
+            0%   { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loader p {
+            margin-top: 30px;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        /* Content after loading */
+        #content {
+            display: none;
+            height: 100vh;
+            background: #000;
+        }
+        #content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;   /* photo poori dikhegi */
+            /* object-fit: cover;  agar stretch chahiye to yeh laga dena */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>LOADING...</p>
+    </div>
+
+    <div id="content">
+        <img src="3.jpg" alt="surprise">
+    </div>
+
+    <script>
+        // 10 second baad loading screen hide + image show
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }, 10000);  // 10000 ms = 10 seconds
+    </script>
+
+</body>
+</html>
